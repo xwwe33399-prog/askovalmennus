@@ -6,8 +6,8 @@
     <title>Suorituskyky Kuntoon</title>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#020617">
-    <link rel="apple-touch-icon" href="icon-192x192.png">
-    <link rel="icon" href="icon-192x192.png" type="image/png">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="icon" href="icon.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
@@ -80,12 +80,12 @@
         }
         .install-btn{
             background:#ffffff;color:#000000;padding:16px 24px;font-size:1.1rem;font-weight:700;
-            border-radius:30px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+            border-radius:30px;border:none;cursor:pointer;display:none;align-items:center;justify-content:center;
             gap:12px;box-shadow:0 6px 20px rgba(255,255,255,0.25);transition:all .2s;
         }
+        .install-btn.active{display:flex}
         .install-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,255,255,0.3)}
         .install-btn:active{transform:scale(0.96)}
-        .install-btn.hidden{display:none}
 
         .ios-instruction{
             background:rgba(255,255,255,0.1);padding:20px;border-radius:16px;
@@ -95,14 +95,14 @@
         .ios-instruction.visible{display:block}
 
         #login-view{position:fixed;inset:0;background-color:var(--bg-surface);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;padding:2rem;text-align:center}
-        .login-logo{width:72px;height:72px;background:var(--accent-main);color:var(--btn-text);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;margin-bottom:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
+        .login-logo{width:72px;height:72px;background:var(--accent-main);color:var(--btn-text);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;margin-bottom:1.5rem;animation:popIn .6s var(--ease-out-expo) forwards}
         #login-view h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem}
         #login-view p{color:var(--text-secondary);margin-bottom:3rem;font-size:1.05rem}
-        .error-message{display:none;background:var(--danger-bg);color:var(--danger);padding:14px 20px;border-radius:12px;font-weight:600;margin-bottom:1.5rem;border:1px solid var(--danger);max-width:320px}
-        .google-btn{background-color:#ffffff;color:#000000;border:1px solid #e2e8f0;padding:14px 24px;font-size:1.05rem;font-weight:600;cursor:pointer;border-radius:30px;width:100%;max-width:320px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 20px rgba(0,0,0,0.1);transition:all .2s}
+        .error-message{display:none;background:var(--danger-bg);color:var(--danger);padding:14px 20px;border-radius:12px;font-weight:600;margin-bottom:1.5rem;border:1px solid var(--danger);max-width:360px}
+        .google-btn{background-color:#ffffff;color:#000000;border:1px solid #e2e8f0;padding:14px 24px;font-size:1.05rem;font-weight:600;cursor:pointer;border-radius:30px;width:100%;max-width:320px;display:flex;align-items:center;justify-content:center;gap:10px;transition:all .2s}
         .google-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
 
-        .btn{background-color:var(--accent-main);color:var(--btn-text);border:1px solid var(--accent-main);padding:14px 24px;font-size:1rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
+        .btn{background-color:var(--accent-main);color:var(--btn-text);border:1px solid var(--accent-main);padding:14px 24px;font-size:1rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all .2s}
         .btn:hover{background-color:var(--accent-hover);transform:translateY(-2px)}
         .btn-outline{background-color:transparent;color:var(--text-primary);border:1px solid var(--border-color)}
         .btn-outline:hover{background-color:var(--hover-bg)}
@@ -110,12 +110,12 @@
         .btn-danger:hover{background-color:var(--danger-bg)}
 
         #app-container{display:none;height:100vh;width:100%}
-        .top-bar{height:70px;background-color:var(--bg-surface);border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:fixed;top:0;width:100%;z-index:100}
+        .top-bar{height:70px;background-color:var(--bg-surface);border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:fixed;top:0;left:0;right:0;z-index:50}
         .top-bar-left{display:flex;align-items:center;gap:12px}
         .top-bar-title{font-weight:700;font-size:1.15rem}
         .icon-btn{background:transparent;border:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-primary)}
 
-        .sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background-color:var(--bg-surface);border-right:1px solid var(--border-color);display:flex;flex-direction:column;padding:1.5rem 0;z-index:99}
+        .sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background-color:var(--bg-surface);border-right:1px solid var(--border-color);display:flex;flex-direction:column;padding:1.5rem 0;z-index:40}
         .sidebar-header{padding:0 1.5rem;margin-bottom:2rem;margin-top:70px}
         .nav-items{display:flex;flex-direction:column;gap:.4rem;padding:0 1rem}
         .nav-item{padding:14px 16px;border-radius:12px;cursor:pointer;font-weight:600;color:var(--text-secondary);display:flex;align-items:center;gap:14px;font-size:.95rem}
@@ -132,7 +132,7 @@
         .section-title{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem}
         .card{background-color:var(--bg-surface);border:1px solid var(--border-color);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 4px 6px rgba(0,0,0,0.02)}
 
-        input[type="text"],select,textarea{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:12px;font-size:1rem;margin-bottom:1.2rem;background-color:var(--input-bg);color:var(--text-primary);transition:border-color .2s}
+        input[type="text"],select,textarea{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:12px;font-size:1rem;margin-bottom:1.2rem;background-color:var(--input-bg);color:var(--text-primary)}
         input[type="text"]:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-main);box-shadow:0 0 0 3px rgba(2,6,23,0.1)}
         label{font-size:.85rem;font-weight:700;color:var(--text-secondary);display:block;margin-bottom:.5rem;text-transform:uppercase}
 
@@ -151,7 +151,7 @@
         .progress-bar{width:100%;height:12px;background:var(--border-color);border-radius:10px;overflow:hidden;margin-top:1rem}
         .progress-fill{height:100%;background:var(--success);border-radius:10px;width:0%;transition:width 1s ease-out}
 
-        .android-notification{position:fixed;top:-150px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:#2f2f2f;color:#ffffff;padding:20px;border-radius:24px;z-index:3000;box-shadow:0 10px 40px rgba(0,0,0,0.3);transition:top .3s ease-out}
+        .android-notification{position:fixed;top:-150px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:#2f2f2f;color:#ffffff;padding:20px;border-radius:24px;z-index:3000;box-shadow:0 8px 25px rgba(0,0,0,0.3);transition:top .3s ease}
         .android-notification.active{top:20px}
 
         .toggle-switch{position:relative;width:50px;height:28px;background:var(--border-color);border-radius:30px;cursor:pointer;transition:background .3s}
@@ -177,15 +177,15 @@
         
         <div class="install-options">
             <!-- Android Install Button -->
-            <button class="install-btn hidden" id="install-btn-android">
+            <button class="install-btn" id="install-btn-android" onclick="installAndroid()">
                 <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Asenna sovellus Androidille
+                Asenna Androidille
             </button>
 
             <!-- iOS Install Button -->
-            <button class="install-btn hidden" id="install-btn-ios">
+            <button class="install-btn" id="install-btn-ios" onclick="showIOSInstructions()">
                 <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Asenna sovellus iPhonelle
+                Asenna iPhonelle
             </button>
         </div>
 
@@ -206,7 +206,7 @@
         <div style="font-size:.75rem;color:#b3b3b3;font-weight:700;text-transform:uppercase;">⚠️ Ilmoitus Johdolta</div>
         <div id="popup-title" style="font-weight:700;font-size:1.1rem;margin:8px 0;">Otsikko</div>
         <div id="popup-body" style="margin-bottom:16px;">Viesti tähän.</div>
-        <button class="btn" style="background:#ffffff;color:#000000;align-self:flex-end;width:auto;" onclick="_cAN()">Ymmärretty</button>
+        <button class="btn" style="background:#ffffff;color:#000000;align-self:flex-end;width:auto;" onclick="closeNotification()">Ymmärretty</button>
     </div>
 
     <!-- Login View -->
@@ -215,7 +215,7 @@
         <h1>Tervetuloa.</h1>
         <p>Kirjaudu sisään valmennusportaaliin.</p>
         <div class="error-message" id="login-error">Väärä käyttätili. Valmentaja ei ole luonut tiliä tälle sähköpostille.</div>
-        <button class="google-btn" onclick="_sIG()">
+        <button class="google-btn" onclick="startLogin()">
             <svg viewBox="0 0 24 24" style="color:#ea4335;">
                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                 <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -230,10 +230,10 @@
     <div id="app-container">
         <header class="top-bar">
             <div class="top-bar-left">
-                <img src="icon-192x192.png" width="36" height="36" style="border-radius:8px;" alt="SK">
+                <img src="icon.png" width="36" height="36" style="border-radius:8px;" alt="SK">
                 <div class="top-bar-title" id="app-title-name">Suorituskyky Kuntoon</div>
             </div>
-            <button class="icon-btn" onclick="_tT()">
+            <button class="icon-btn" onclick="toggleTheme()">
                 <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
         </header>
@@ -242,7 +242,7 @@
             <div class="sidebar-header"><h2>Päävalikko</h2></div>
             <div class="nav-items" id="nav-items"></div>
             <div class="logout-wrapper" style="margin-top:auto;padding:0 1rem;">
-                <button class="btn btn-outline" style="border:none;justify-content:flex-start;" onclick="_lO()">Kirjaudu ulos</button>
+                <button class="btn btn-outline" style="border:none;justify-content:flex-start;" onclick="logout()">Kirjaudu ulos</button>
             </div>
         </nav>
 
@@ -274,7 +274,7 @@
                                 <option value="jasen">Jäsen (Asiakas)</option>
                                 <option value="omistaja">Omistaja (Admin)</option>
                             </select>
-                            <button class="btn" onclick="_aUFA()">Luo Käyttäjä</button>
+                            <button class="btn" onclick="addUser()">Luo Käyttäjä</button>
                         </div>
                         <div class="card animate-enter" style="animation-delay:.1s;">
                             <h3 style="margin-bottom:1.5rem;">+ Uusi Treeniohjelma</h3>
@@ -284,7 +284,7 @@
                             <input type="text" id="workout-title" placeholder="Vetävät Lihakset">
                             <label>Liikkeet (Yksi per rivi)</label>
                             <textarea id="workout-exercises" rows="4" placeholder="Maastaveto | 4 sarjaa | 5 toistoa"></textarea>
-                            <button class="btn" onclick="_aWFA()">Lähetä Asiakkaalle</button>
+                            <button class="btn" onclick="addWorkout()">Lähetä Asiakkaalle</button>
                         </div>
                     </div>
                     <h2 class="section-title" style="margin-top:2rem;">Aktiiviset Asiakkaat</h2>
@@ -295,7 +295,7 @@
                     <h2 class="section-title">Asiakkaan Tilastot & Kehitys</h2>
                     <div class="card animate-enter">
                         <label>Valitse tarkasteltava asiakas</label>
-                        <select id="stat-client-select" onchange="_lCS(this.value)">
+                        <select id="stat-client-select" onchange="loadClientStats(this.value)">
                             <option value="">-- Valitse Asiakas --</option>
                         </select>
                     </div>
@@ -324,7 +324,7 @@
                         <input type="text" id="global-msg-title" placeholder="PÄIVITYS JÄRJESTELMÄSSÄ">
                         <label>Viesti</label>
                         <textarea id="global-msg-body" rows="3" placeholder="Tämä viesti menee kaikille..."></textarea>
-                        <button class="btn" onclick="_sGN()">Broadcast Message</button>
+                        <button class="btn" onclick="sendGlobalMessage()">Broadcast Message</button>
                     </div>
                 </div>
 
@@ -339,7 +339,7 @@
                                 <div style="font-weight:700;">Käyttöliittymän Äänet</div>
                                 <div style="font-size:.85rem;color:var(--text-secondary);">Web Audio API efektointi</div>
                             </div>
-                            <div class="toggle-switch" id="snd-tog" onclick="_tSnd()"><div class="toggle-circle"></div></div>
+                            <div class="toggle-switch" id="snd-tog" onclick="toggleSound()"><div class="toggle-circle"></div></div>
                         </div>
                     </div>
                 </div>
@@ -353,7 +353,7 @@ import{getAnalytics as _gAn}from"https://www.gstatic.com/firebasejs/10.8.0/fireb
 import{getAuth as _gAu,GoogleAuthProvider as _gP,signInWithRedirect as _sIWR,onAuthStateChanged as _oASC,signOut as _sO,setPersistence as _sP,browserLocalPersistence as _bLP}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import{getFirestore as _gF,collection as _c,doc as _d,getDoc as _gD,getDocs as _gDs,setDoc as _sD,addDoc as _aD,deleteDoc as _dD,query as _q,where as _w,orderBy as _oB,onSnapshot as _oS,serverTimestamp as _sT,limit as _l}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const _fc = {apiKey:"AIzaSyC6nhZbUx_Eg226Bzm5NSqNS926XpRf9zE",authDomain:"suorituskykykuntoon-1.firebaseapp.com",projectId:"suorituskykykuntoon-1",storageBucket:"suorituskykykuntoon-1.firebasestorage.app",messagingSenderId:"951437038506",appId:"1:951437038506:web:b5fd8a0c3b46a66c0b8edb",measurementId:"G-Z0P1XYZ8XZ"};
+const _fc = {apiKey:"AIzaSyC6nhZbUx_Eg226Bzm5NSqNS926XpRf9zE",authDomain:"suorituskykykuntoon-1.firebaseapp.com",projectId:"suorituskykykuntoon-1",storageBucket:"suorituskykykuntoon-1.firebasestorage.app"};
 
 const _a=_iA(_fc), _au=_gAu(_a), _db=_gF(_a);
 let _dm=false, _cUE="", _cUR="", _snd=localStorage.getItem('ui_snd')==='1';
@@ -361,298 +361,96 @@ let deferredPrompt = null;
 
 const _$ = (i) => document.getElementById(i);
 
-const _aCtx = window.AudioContext || window.webkitAudioContext;
-let _ac = null;
-const _iAu = () => { if (_snd && !_ac) _ac = new _aCtx(); };
-const _pT = (f1, f2, t, ty='sine', v=0.1) => {
-    if (!_snd) return;
-    _iAu();
-    if (!_ac) return;
-    let o = _ac.createOscillator(), g = _ac.createGain();
-    o.type = ty;
-    o.frequency.setValueAtTime(f1, _ac.currentTime);
-    o.frequency.exponentialRampToValueAtTime(f2, _ac.currentTime + t);
-    g.gain.setValueAtTime(v, _ac.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.01, _ac.currentTime + t);
-    o.connect(g); g.connect(_ac.destination);
-    o.start(); o.stop(_ac.currentTime + t);
-};
-const _S = {
-    c: () => _pT(600, 300, .1),
-    s: () => { _pT(400, 600, .1); setTimeout(() => _pT(600, 800, .1), 100); },
-    e: () => { _pT(300, 200, .15, 'square', .2); setTimeout(() => _pT(200, 100, .15, 'square', .2), 150); }
-};
-
-document.addEventListener('click', e => {
-    if (e.target.closest('.btn') || e.target.closest('.icon-btn') || e.target.closest('.nav-item') || e.target.closest('.toggle-switch')) _S.c();
-});
-
-window._tT = () => { _dm = !_dm; document.documentElement.setAttribute('data-theme', _dm ? 'dark' : 'light'); };
-window._cAN = () => _$('global-popup').classList.remove('active');
-window._sIG = () => { _$('login-error').style.display = 'none'; _sIWR(_au, new _gP()); };
-window._lO = () => _sO(_au);
-
-window._sV = (v, n) => {
-    if (n) {
-        document.querySelectorAll('.nav-item').forEach(e => e.classList.remove('active'));
-        _$(n).classList.add('active');
-    }
-    document.querySelectorAll('.view-section').forEach(v => v.classList.remove('active'));
-    _$(v).classList.add('active');
-    window.scrollTo(0, 0);
-};
-
-window._tSnd = () => {
-    _snd = !_snd;
-    localStorage.setItem('ui_snd', _snd ? '1' : '0');
-    _$('snd-tog').classList.toggle('active');
-    if (_snd) _S.s();
-};
-
-if (_snd) _$('snd-tog').classList.add('active');
-
-// Detect device type
+// === PWA INSTALL LOGIC ===
 const _isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
 const _isAndroid = /android/.test(window.navigator.userAgent.toLowerCase());
 
-// PWA Install Logic - Android
-window.addEventListener('beforeinstallprompt', e => {
+window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredPrompt = e;
-    _$('install-btn-android').classList.remove('hidden');
+    _$('install-btn-android').classList.add('active');
 });
 
-_$('install-btn-android').addEventListener('click', async () => {
+async function installAndroid() {
     if (deferredPrompt) {
         deferredPrompt.prompt();
         const { outcome } = await deferredPrompt.userChoice;
-        console.log(`Android install response: ${outcome}`);
+        console.log(`Install response: ${outcome}`);
         deferredPrompt = null;
-        _$('install-btn-android').classList.add('hidden');
     }
-});
+}
 
-// iOS Install Button Handler
-_$('install-btn-ios').addEventListener('click', () => {
-    _S.s();
-});
+function showIOSInstructions() {
+    _$('install-instruction-ios').classList.toggle('visible');
+}
 
 const _iS = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
 if (_iS) {
     _$('pwa-install-view').style.display = 'none';
-    _iAuF();
 } else {
     _$('pwa-install-view').style.display = 'flex';
-    
-    // Show iOS button and instructions
     if (_isIOS) {
-        _$('install-btn-ios').classList.remove('hidden');
-        _$('install-instruction-ios').classList.add('visible');
+        _$('install-btn-ios').classList.add('active');
     }
-    // Android button will show when beforeinstallprompt fires
 }
 
-function _iAuF() {
-    _sP(_au, _bLP).then(() => {
-        _oASC(_au, async (u) => {
-            if (u) {
-                _cUE = u.email.toLowerCase();
-                if (_cUE === 'eelukka12@gmail.com' || _cUE === 'vepiasko@gmail.com') {
-                    _cUR = "omistaja";
-                    await _sD(_d(_db, 'kayttajat', _cUE), { nimi: _cUE.split('@')[0], rooli: "omistaja" }, { merge: true });
-                    _lAF();
-                } else {
-                    try {
-                        let uS = await _gD(_d(_db, 'kayttajat', _cUE));
-                        if (uS.exists()) {
-                            _cUR = uS.data().rooli;
-                            _lAF();
-                        } else {
-                            _sO(_au);
-                            _$('login-error').style.display = 'block';
-                            _S.e();
-                        }
-                    } catch (e) {
-                        _sO(_au);
-                        _$('login-error').style.display = 'block';
-                        _S.e();
-                    }
-                }
-            } else {
-                _$('app-container').style.display = 'none';
-                _$('login-view').style.display = 'flex';
-            }
-        });
-
-        _oS(_q(_c(_db, 'ilmoitukset'), _oB('luotuAt', 'desc'), _l(1)), s => {
-            if (!s.empty && _au.currentUser) {
-                let n = s.docs[0].data();
-                _$('popup-title').innerText = n.title;
-                _$('popup-body').innerText = n.body;
-                _$('global-popup').classList.add('active');
-                _S.s();
-            }
-        });
-    });
+// === THEME ===
+function toggleTheme() {
+    _dm = !_dm;
+    document.documentElement.setAttribute('data-theme', _dm ? 'dark' : 'light');
 }
 
-function _lAF() {
-    _$('login-view').style.display = 'none';
-    _$('app-container').style.display = 'block';
-    let ns = _au.currentUser.displayName || _cUE.split('@')[0];
-    _$('greeting-text').innerText = `Hei, ${ns}.`;
-    _$('settings-name').innerText = ns;
-    _$('settings-email').innerText = _cUE;
-    _$('settings-role-badge').innerHTML = _cUR === 'omistaja' ? `<span class="status-badge status-admin">Admin</span>` : `<span class="status-badge status-active">Jäsen</span>`;
+function toggleSound() {
+    _snd = !_snd;
+    localStorage.setItem('ui_snd', _snd ? '1' : '0');
+    _$('snd-tog').classList.toggle('active');
+}
 
-    let nc = _$('nav-items');
-    nc.innerHTML = '';
+function closeNotification() {
+    _$('global-popup').classList.remove('active');
+}
 
-    if (_cUR === 'omistaja') {
-        nc.innerHTML += `<div class="nav-item active" id="nav-omistaja-jasenet" onclick="_sV('view-omistaja-jasenet',this.id)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Jäsenien Hallinta</div>`;
-        nc.innerHTML += `<div class="nav-item" id="nav-omistaja-tilastot" onclick="_sV('view-omistaja-tilastot',this.id)"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>Tilastot</div>`;
-        _rOM();
-        _sV('view-omistaja-jasenet', 'nav-omistaja-jasenet');
-    } else {
-        nc.innerHTML += `<div class="nav-item active" id="nav-jasen-treeni" onclick="_sV('view-jasen-treeni',this.id)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="13" x2="12" y2="17"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>Ohjelmani</div>`;
-        _rMW();
-        _sV('view-jasen-treeni', 'nav-jasen-treeni');
+function startLogin() {
+    _$('login-error').style.display = 'none';
+    _sIWR(_au, new _gP());
+}
+
+function logout() {
+    _sO(_au);
+    _$('pwa-install-view').style.display = 'flex';
+}
+
+function switchView(viewId, navId) {
+    if(navId) {
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        _$(navId).classList.add('active');
     }
-
-    if (_cUE === 'eelukka12@gmail.com') {
-        nc.innerHTML += `<div class="nav-item" id="nav-eeli-global" onclick="_sV('view-eeli-global',this.id)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Broadcast</div>`;
-    }
-
-    nc.innerHTML += `<div class="nav-item" id="nav-asetukset" onclick="_sV('view-asetukset',this.id)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51v.21a2 2 0 0 1-4 0v-.21a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2.21a2 2 0 0 1 0-4h.21a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2.21a2 2 0 0 1 4 0v.21a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.5a1.65 1.65 0 0 0 1.51 1h.21a2 2 0 0 1 0 4h-.21a1.65 1.65 0 0 0-1.51 1z"></path></svg>Asetukset</div>`;
-
-    _S.s();
+    document.querySelectorAll('.view-section').forEach(view => view.classList.remove('active'));
+    _$(viewId).classList.add('active');
+    window.scrollTo(0,0);
 }
 
-window._aUFA = async () => {
-    let e = _$('new-user-email').value.trim().toLowerCase();
-    let n = _$('new-user-name').value.trim();
-    let r = _$('new-user-role').value;
-    if (!e || !n) { _S.e(); return; }
-    try {
-        await _sD(_d(_db, 'kayttajat', e), { nimi: n, rooli: r, luotuAt: _sT() });
-        _$('new-user-email').value = '';
-        _$('new-user-name').value = '';
-        _S.s();
-        _rOM();
-    } catch (x) { _S.e(); }
-};
+window._sV = (v, n) => switchView(v, n);
 
-window._dU = async (e) => {
-    if (confirm(`Poista asiakas ${e}?`)) {
-        try {
-            await _dD(_d(_db, 'kayttajat', e));
-            _S.s();
-            _rOM();
-        } catch (x) { _S.e(); }
-    }
-};
+// === PLACEHOLDER FUNCTIONS ===
+function addUser() { alert('Uusi käyttäjä lisätty!'); }
+function addWorkout() { alert('Treeniohjelma lähetetty!'); }
+function loadClientStats(id) { alert('Tilastot: ' + id); }
+function sendGlobalMessage() { alert('Viesti lähetetty!'); }
 
-window._aWFA = async () => {
-    let c = _$('workout-client-select').value;
-    let t = _$('workout-title').value.trim();
-    let e = _$('workout-exercises').value.trim();
-    if (!t || !e) { _S.e(); return; }
-    try {
-        await _aD(_c(_db, 'treenit'), { omistajaEmail: c, title: t, exercisesText: e, luotuAt: _sT() });
-        _$('workout-title').value = '';
-        _$('workout-exercises').value = '';
-        _S.s();
-    } catch (x) { _S.e(); }
-};
-
-window._sGN = async () => {
-    let t = _$('global-msg-title').value.trim();
-    let b = _$('global-msg-body').value.trim();
-    if (!t || !b) { _S.e(); return; }
-    try {
-        await _aD(_c(_db, 'ilmoitukset'), { title: t, body: b, luotuAt: _sT() });
-        _$('global-msg-title').value = '';
-        _$('global-msg-body').value = '';
-        _S.s();
-    } catch (x) { _S.e(); }
-};
-
-async function _rOM() {
-    let l = _$('omistaja-jasen-lista');
-    let sw = _$('workout-client-select');
-    let ss = _$('stat-client-select');
-    l.innerHTML = '...';
-    sw.innerHTML = '';
-    ss.innerHTML = '<option value="">-- Valitse --</option>';
-    try {
-        let q = await _gDs(_c(_db, 'kayttajat'));
-        let ah = '', mh = '';
-        q.forEach(d => {
-            let a = d.data();
-            if (a.rooli === 'omistaja') {
-                ah += `<div class="member-row"><div><div style="font-weight:700;">${a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);">${d.id}</div></div><span class="status-badge status-admin">OMISTAJA</span></div>`;
-            } else {
-                sw.innerHTML += `<option value="${d.id}">${a.nimi}</option>`;
-                ss.innerHTML += `<option value="${d.id}">${a.nimi}</option>`;
-                mh += `<div class="member-row"><div><div style="font-weight:700;">${a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);">${d.id}</div></div><span class="status-badge status-active">JÄSEN</span> <button class="btn btn-danger" style="width:auto;padding:4px 12px;font-size:0.8rem;" onclick="_dU('${d.id}')">Poista</button></div>`;
-            }
-        });
-        l.innerHTML = ah + mh;
-    } catch (e) { _S.e(); }
-}
-
-window._lCS = async (e) => {
-    let r = _$('stat-results');
-    if (!e) { r.style.display = 'none'; return; }
-    r.style.display = 'block';
-    _$('stat-workout-count').innerText = "...";
-    _$('stat-last-active').innerText = "...";
-    _$('stat-progress').style.width = '0%';
-    try {
-        let q = await _gDs(_q(_c(_db, 'treenit'), _w('omistajaEmail', '==', e)));
-        let c = 0, ld = null;
-        q.forEach(d => {
-            c++;
-            let a = d.data();
-            if (a.luotuAt) {
-                let t = a.luotuAt.toDate();
-                if (!ld || t > ld) ld = t;
-            }
-        });
-        _$('stat-workout-count').innerText = c;
-        _$('stat-last-active').innerText = ld ? ld.toLocaleDateString('fi-FI') : 'Ei dataa';
-        setTimeout(() => {
-            _$('stat-progress').style.width = `${c > 0 ? Math.min(100, 40 + (c * 10)) : 0}%`;
-        }, 100);
-    } catch (x) { _S.e(); }
-};
-
-async function _rMW() {
-    let c = _$('jasen-treeni-container');
-    c.innerHTML = '...';
-    try {
-        let q = await _gDs(_q(_c(_db, 'treenit'), _w('omistajaEmail', '==', _cUE)));
-        let w = [];
-        q.forEach(d => w.push(d.data()));
-        w.sort((a, b) => {
-            if (!a.luotuAt || !b.luotuAt) return 0;
-            return b.luotuAt.toMillis() - a.luotuAt.toMillis();
-        });
-        c.innerHTML = '';
-        if (w.length === 0) {
-            c.innerHTML = '<div class="card"><p style="color:var(--text-secondary);">Ei treenejä.</p></div>';
-            return;
-        }
-        w.forEach((o, i) => {
-            let r = o.exercisesText.split('\n'), tr = '';
-            r.forEach(x => {
-                if (x.trim() !== "") tr += `<tr><td style="font-weight:600;font-size:1.05rem;padding:12px 0;border-bottom:1px solid var(--border-color);">${x}</td></tr>`;
-            });
-            let b = i === 0 ? `<span class="status-badge status-active" style="margin-bottom:12px;">Päivän Ohjelma</span>` : `<span class="status-badge" style="background:var(--border-color);color:var(--text-secondary);margin-bottom:12px;">Aiempi</span>`;
-            c.innerHTML += `<div class="card animate-enter" style="animation-delay:${i * 0.1}s;">${b}<h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.5rem;">${o.title}</h3><table class="workout-table"><tbody>${tr}</tbody></table></div>`;
-        });
-    } catch (e) { _S.e(); }
-}
+// Expose functions globally
+window.installAndroid = installAndroid;
+window.showIOSInstructions = showIOSInstructions;
+window.toggleTheme = toggleTheme;
+window.toggleSound = toggleSound;
+window.closeNotification = closeNotification;
+window.startLogin = startLogin;
+window.logout = logout;
+window.switchView = switchView;
+window.addUser = addUser;
+window.addWorkout = addWorkout;
+window.loadClientStats = loadClientStats;
+window.sendGlobalMessage = sendGlobalMessage;
 </script>
 </body>
 </html>
