@@ -85,20 +85,24 @@
         }
         .install-btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(255,255,255,0.3)}
         .install-btn:active{transform:scale(0.96)}
+        .install-btn.hidden{display:none}
 
         .ios-instruction{
             background:rgba(255,255,255,0.1);padding:20px;border-radius:16px;
             border:1px solid rgba(255,255,255,0.2);max-width:350px;text-align:left;margin-top:1.5rem;
+            display:none;
         }
+        .ios-instruction.visible{display:block}
 
         #login-view{position:fixed;inset:0;background-color:var(--bg-surface);display:none;flex-direction:column;align-items:center;justify-content:center;z-index:1000;padding:2rem;text-align:center}
-        .login-logo{width:72px;height:72px;background:var(--accent-main);color:var(--btn-text);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;margin-bottom:2rem}
+        .login-logo{width:72px;height:72px;background:var(--accent-main);color:var(--btn-text);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;margin-bottom:2rem;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
         #login-view h1{font-size:2.2rem;font-weight:800;letter-spacing:-.03em;margin-bottom:.5rem}
         #login-view p{color:var(--text-secondary);margin-bottom:3rem;font-size:1.05rem}
-        .error-message{display:none;background:var(--danger-bg);color:var(--danger);padding:14px 20px;border-radius:12px;font-weight:600;margin-bottom:1.5rem;border:1px solid var(--danger);max-width:360px;font-size:.9rem}
-        .google-btn{background-color:#ffffff;color:#000000;border:1px solid #e2e8f0;padding:14px 24px;font-size:1.05rem;font-weight:600;cursor:pointer;border-radius:30px;width:100%;max-width:320px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 4px 6px rgba(0,0,0,0.05)}
+        .error-message{display:none;background:var(--danger-bg);color:var(--danger);padding:14px 20px;border-radius:12px;font-weight:600;margin-bottom:1.5rem;border:1px solid var(--danger);max-width:320px}
+        .google-btn{background-color:#ffffff;color:#000000;border:1px solid #e2e8f0;padding:14px 24px;font-size:1.05rem;font-weight:600;cursor:pointer;border-radius:30px;width:100%;max-width:320px;display:flex;align-items:center;justify-content:center;gap:12px;box-shadow:0 6px 20px rgba(0,0,0,0.1);transition:all .2s}
+        .google-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(0,0,0,0.15)}
 
-        .btn{background-color:var(--accent-main);color:var(--btn-text);border:1px solid var(--accent-main);padding:14px 24px;font-size:1rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all .2s ease;width:100%;display:flex;align-items:center;justify-content:center;gap:10px}
+        .btn{background-color:var(--accent-main);color:var(--btn-text);border:1px solid var(--accent-main);padding:14px 24px;font-size:1rem;font-weight:600;cursor:pointer;border-radius:12px;transition:all .2s;display:inline-flex;align-items:center;justify-content:center;gap:8px}
         .btn:hover{background-color:var(--accent-hover);transform:translateY(-2px)}
         .btn-outline{background-color:transparent;color:var(--text-primary);border:1px solid var(--border-color)}
         .btn-outline:hover{background-color:var(--hover-bg)}
@@ -106,12 +110,12 @@
         .btn-danger:hover{background-color:var(--danger-bg)}
 
         #app-container{display:none;height:100vh;width:100%}
-        .top-bar{height:70px;background-color:var(--bg-surface);border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:fixed;top:0;left:0;right:0;z-index:50}
+        .top-bar{height:70px;background-color:var(--bg-surface);border-bottom:1px solid var(--border-color);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;position:fixed;top:0;width:100%;z-index:100}
         .top-bar-left{display:flex;align-items:center;gap:12px}
         .top-bar-title{font-weight:700;font-size:1.15rem}
         .icon-btn{background:transparent;border:none;width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-primary)}
 
-        .sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background-color:var(--bg-surface);border-right:1px solid var(--border-color);display:flex;flex-direction:column;padding:1.5rem 0;z-index:40;transition:transform var(--transition-smooth)}
+        .sidebar{position:fixed;top:0;left:0;bottom:0;width:280px;background-color:var(--bg-surface);border-right:1px solid var(--border-color);display:flex;flex-direction:column;padding:1.5rem 0;z-index:99}
         .sidebar-header{padding:0 1.5rem;margin-bottom:2rem;margin-top:70px}
         .nav-items{display:flex;flex-direction:column;gap:.4rem;padding:0 1rem}
         .nav-item{padding:14px 16px;border-radius:12px;cursor:pointer;font-weight:600;color:var(--text-secondary);display:flex;align-items:center;gap:14px;font-size:.95rem}
@@ -128,7 +132,8 @@
         .section-title{font-size:1.4rem;font-weight:700;margin-bottom:1.5rem}
         .card{background-color:var(--bg-surface);border:1px solid var(--border-color);border-radius:16px;padding:2rem;margin-bottom:1.5rem;box-shadow:0 4px 6px rgba(0,0,0,0.02)}
 
-        input[type="text"],select,textarea{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:12px;font-size:1rem;margin-bottom:1.2rem;background-color:var(--input-bg);color:var(--text-primary)}
+        input[type="text"],select,textarea{width:100%;padding:14px 16px;border:1px solid var(--border-color);border-radius:12px;font-size:1rem;margin-bottom:1.2rem;background-color:var(--input-bg);color:var(--text-primary);transition:border-color .2s}
+        input[type="text"]:focus,select:focus,textarea:focus{outline:none;border-color:var(--accent-main);box-shadow:0 0 0 3px rgba(2,6,23,0.1)}
         label{font-size:.85rem;font-weight:700;color:var(--text-secondary);display:block;margin-bottom:.5rem;text-transform:uppercase}
 
         .workout-table{width:100%;border-collapse:collapse}
@@ -146,7 +151,7 @@
         .progress-bar{width:100%;height:12px;background:var(--border-color);border-radius:10px;overflow:hidden;margin-top:1rem}
         .progress-fill{height:100%;background:var(--success);border-radius:10px;width:0%;transition:width 1s ease-out}
 
-        .android-notification{position:fixed;top:-150px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:#2f2f2f;color:#ffffff;padding:20px;border-radius:24px;z-index:3000;box-shadow:0 10px 30px rgba(0,0,0,0.3);display:flex;flex-direction:column;gap:12px;transition:top .5s cubic-bezier(0.175,0.885,0.32,1.275)}
+        .android-notification{position:fixed;top:-150px;left:50%;transform:translateX(-50%);width:90%;max-width:400px;background:#2f2f2f;color:#ffffff;padding:20px;border-radius:24px;z-index:3000;box-shadow:0 10px 40px rgba(0,0,0,0.3);transition:top .3s ease-out}
         .android-notification.active{top:20px}
 
         .toggle-switch{position:relative;width:50px;height:28px;background:var(--border-color);border-radius:30px;cursor:pointer;transition:background .3s}
@@ -171,17 +176,26 @@
         <p>Valmennusportaali toimii parhaimmillaan asennettuna sovelluksena.</p>
         
         <div class="install-options">
-            <button class="install-btn" id="install-btn-pwa">
+            <!-- Android Install Button -->
+            <button class="install-btn hidden" id="install-btn-android">
                 <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                Asenna sovellus laitteelle
+                Asenna sovellus Androidille
+            </button>
+
+            <!-- iOS Install Button -->
+            <button class="install-btn hidden" id="install-btn-ios">
+                <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Asenna sovellus iPhonelle
             </button>
         </div>
 
+        <!-- iOS Instructions -->
         <div class="ios-instruction" id="install-instruction-ios">
-            <h3 style="margin-bottom:10px;font-size:1.1rem;">Näin asennat iPhonella:</h3>
+            <h3 style="margin-bottom:10px;font-size:1.1rem;">📱 Näin asennat iPhonella:</h3>
             <ol style="margin-left:20px;line-height:1.8;color:#cbd5e1;">
-                <li>Paina Safari-selaimen alareunasta <b>Jaa-kuvaketta</b></li>
-                <li>Valitse <b>"Lisää kotivalikkoon"</b></li>
+                <li>Paina Safari-selaimen <b>alareunasta Jaa-kuvaketta</b></li>
+                <li>Selaa alas ja valitse <b>"Lisää kotivalikkoon"</b></li>
+                <li>Napsauta <b>"Lisää"</b> oikeassa yläkulmassa</li>
                 <li>Avaa SK-sovellus kotivalikosta</li>
             </ol>
         </div>
@@ -339,7 +353,7 @@ import{getAnalytics as _gAn}from"https://www.gstatic.com/firebasejs/10.8.0/fireb
 import{getAuth as _gAu,GoogleAuthProvider as _gP,signInWithRedirect as _sIWR,onAuthStateChanged as _oASC,signOut as _sO,setPersistence as _sP,browserLocalPersistence as _bLP}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
 import{getFirestore as _gF,collection as _c,doc as _d,getDoc as _gD,getDocs as _gDs,setDoc as _sD,addDoc as _aD,deleteDoc as _dD,query as _q,where as _w,orderBy as _oB,onSnapshot as _oS,serverTimestamp as _sT,limit as _l}from"https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-const _fc = {apiKey:"AIzaSyC6nhZbUx_Eg226Bzm5NSqNS926XpRf9zE",authDomain:"suorituskykykuntoon-1.firebaseapp.com",projectId:"suorituskykykuntoon-1",storageBucket:"suorituskykykuntoon-1.firebasestorage.app",messagingSenderId:"982740992096",appId:"1:982740992096:web:51f23f6fbaa5183a6e8305",measurementId:"G-97PYL50P6Y"};
+const _fc = {apiKey:"AIzaSyC6nhZbUx_Eg226Bzm5NSqNS926XpRf9zE",authDomain:"suorituskykykuntoon-1.firebaseapp.com",projectId:"suorituskykykuntoon-1",storageBucket:"suorituskykykuntoon-1.firebasestorage.app",messagingSenderId:"951437038506",appId:"1:951437038506:web:b5fd8a0c3b46a66c0b8edb",measurementId:"G-Z0P1XYZ8XZ"};
 
 const _a=_iA(_fc), _au=_gAu(_a), _db=_gF(_a);
 let _dm=false, _cUE="", _cUR="", _snd=localStorage.getItem('ui_snd')==='1';
@@ -397,19 +411,30 @@ window._tSnd = () => {
 
 if (_snd) _$('snd-tog').classList.add('active');
 
-// PWA Install Logic
+// Detect device type
+const _isIOS = /iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase());
+const _isAndroid = /android/.test(window.navigator.userAgent.toLowerCase());
+
+// PWA Install Logic - Android
 window.addEventListener('beforeinstallprompt', e => {
     e.preventDefault();
     deferredPrompt = e;
+    _$('install-btn-android').classList.remove('hidden');
 });
 
-_$('install-btn-pwa').addEventListener('click', () => {
+_$('install-btn-android').addEventListener('click', async () => {
     if (deferredPrompt) {
         deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(() => {
-            deferredPrompt = null;
-        });
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Android install response: ${outcome}`);
+        deferredPrompt = null;
+        _$('install-btn-android').classList.add('hidden');
     }
+});
+
+// iOS Install Button Handler
+_$('install-btn-ios').addEventListener('click', () => {
+    _S.s();
 });
 
 const _iS = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
@@ -418,9 +443,13 @@ if (_iS) {
     _iAuF();
 } else {
     _$('pwa-install-view').style.display = 'flex';
-    if (/iphone|ipad|ipod/.test(window.navigator.userAgent.toLowerCase())) {
-        _$('install-instruction-ios').style.display = 'block';
+    
+    // Show iOS button and instructions
+    if (_isIOS) {
+        _$('install-btn-ios').classList.remove('hidden');
+        _$('install-instruction-ios').classList.add('visible');
     }
+    // Android button will show when beforeinstallprompt fires
 }
 
 function _iAuF() {
@@ -480,21 +509,21 @@ function _lAF() {
     nc.innerHTML = '';
 
     if (_cUR === 'omistaja') {
-        nc.innerHTML += `<div class="nav-item active" id="nav-omistaja-jasenet" onclick="_sV('view-omistaja-jasenet',this.id)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle></svg> Hallinta</div>`;
-        nc.innerHTML += `<div class="nav-item" id="nav-omistaja-tilastot" onclick="_sV('view-omistaja-tilastot',this.id)"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg> Tilastot</div>`;
+        nc.innerHTML += `<div class="nav-item active" id="nav-omistaja-jasenet" onclick="_sV('view-omistaja-jasenet',this.id)"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>Jäsenien Hallinta</div>`;
+        nc.innerHTML += `<div class="nav-item" id="nav-omistaja-tilastot" onclick="_sV('view-omistaja-tilastot',this.id)"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>Tilastot</div>`;
         _rOM();
         _sV('view-omistaja-jasenet', 'nav-omistaja-jasenet');
     } else {
-        nc.innerHTML += `<div class="nav-item active" id="nav-jasen-treeni" onclick="_sV('view-jasen-treeni',this.id)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line></svg> Ohjelmasi</div>`;
+        nc.innerHTML += `<div class="nav-item active" id="nav-jasen-treeni" onclick="_sV('view-jasen-treeni',this.id)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="12" y1="13" x2="12" y2="17"></line><line x1="9" y1="15" x2="15" y2="15"></line></svg>Ohjelmani</div>`;
         _rMW();
         _sV('view-jasen-treeni', 'nav-jasen-treeni');
     }
 
     if (_cUE === 'eelukka12@gmail.com') {
-        nc.innerHTML += `<div class="nav-item" id="nav-eeli-global" onclick="_sV('view-eeli-global',this.id)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> Broadcast</div>`;
+        nc.innerHTML += `<div class="nav-item" id="nav-eeli-global" onclick="_sV('view-eeli-global',this.id)"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>Broadcast</div>`;
     }
 
-    nc.innerHTML += `<div class="nav-item" id="nav-asetukset" onclick="_sV('view-asetukset',this.id)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> Asetukset</div>`;
+    nc.innerHTML += `<div class="nav-item" id="nav-asetukset" onclick="_sV('view-asetukset',this.id)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51v.21a2 2 0 0 1-4 0v-.21a1.65 1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H2.21a2 2 0 0 1 0-4h.21a1.65 1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V2.21a2 2 0 0 1 4 0v.21a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.5a1.65 1.65 0 0 0 1.51 1h.21a2 2 0 0 1 0 4h-.21a1.65 1.65 0 0 0-1.51 1z"></path></svg>Asetukset</div>`;
 
     _S.s();
 }
@@ -561,11 +590,11 @@ async function _rOM() {
         q.forEach(d => {
             let a = d.data();
             if (a.rooli === 'omistaja') {
-                ah += `<div class="member-row"><div><div style="font-weight:700;">\( {a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);"> \){d.id}</div></div><span class="status-badge status-admin">Admin</span></div>`;
+                ah += `<div class="member-row"><div><div style="font-weight:700;">${a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);">${d.id}</div></div><span class="status-badge status-admin">OMISTAJA</span></div>`;
             } else {
-                sw.innerHTML += `<option value="\( {d.id}"> \){a.nimi}</option>`;
-                ss.innerHTML += `<option value="\( {d.id}"> \){a.nimi}</option>`;
-                mh += `<div class="member-row"><div><div style="font-weight:700;">\( {a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);"> \){d.id}</div><span class="status-badge status-active">Jäsen</span></div><button class="btn btn-outline btn-danger" style="width:auto;padding:6px 12px;font-size:.85rem;" onclick="_dU('${d.id}')">Poista</button></div>`;
+                sw.innerHTML += `<option value="${d.id}">${a.nimi}</option>`;
+                ss.innerHTML += `<option value="${d.id}">${a.nimi}</option>`;
+                mh += `<div class="member-row"><div><div style="font-weight:700;">${a.nimi}</div><div style="font-size:.85rem;color:var(--text-secondary);">${d.id}</div></div><span class="status-badge status-active">JÄSEN</span> <button class="btn btn-danger" style="width:auto;padding:4px 12px;font-size:0.8rem;" onclick="_dU('${d.id}')">Poista</button></div>`;
             }
         });
         l.innerHTML = ah + mh;
@@ -593,7 +622,7 @@ window._lCS = async (e) => {
         _$('stat-workout-count').innerText = c;
         _$('stat-last-active').innerText = ld ? ld.toLocaleDateString('fi-FI') : 'Ei dataa';
         setTimeout(() => {
-            _\( ('stat-progress').style.width = ` \){c > 0 ? Math.min(100, 40 + (c * 10)) : 0}%`;
+            _$('stat-progress').style.width = `${c > 0 ? Math.min(100, 40 + (c * 10)) : 0}%`;
         }, 100);
     } catch (x) { _S.e(); }
 };
@@ -619,11 +648,11 @@ async function _rMW() {
             r.forEach(x => {
                 if (x.trim() !== "") tr += `<tr><td style="font-weight:600;font-size:1.05rem;padding:12px 0;border-bottom:1px solid var(--border-color);">${x}</td></tr>`;
             });
-            let b = i === 0 ? `<span class="status-badge status-active" style="margin-bottom:12px;">Päivän Ohjelma</span>` : `<span class="status-badge" style="background:var(--border-color);color:var(--text-secondary);margin-bottom:12px;">Historia</span>`;
-            c.innerHTML += `<div class="card animate-enter" style="animation-delay:\( {i * 0.1}s;"> \){b}<h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.5rem;">\( {o.title}</h3><table class="workout-table"><tbody> \){tr}</tbody></table><button class="btn" style="margin-top:2rem;" onclick="_S.s()">Merkitse suoritetuksi</button></div>`;
+            let b = i === 0 ? `<span class="status-badge status-active" style="margin-bottom:12px;">Päivän Ohjelma</span>` : `<span class="status-badge" style="background:var(--border-color);color:var(--text-secondary);margin-bottom:12px;">Aiempi</span>`;
+            c.innerHTML += `<div class="card animate-enter" style="animation-delay:${i * 0.1}s;">${b}<h3 style="font-size:1.5rem;font-weight:800;margin-bottom:1.5rem;">${o.title}</h3><table class="workout-table"><tbody>${tr}</tbody></table></div>`;
         });
     } catch (e) { _S.e(); }
 }
 </script>
 </body>
-      </html>
+</html>
